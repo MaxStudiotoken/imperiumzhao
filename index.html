@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Imperium Zhao (IMPXZ) – Legado Zombi</title>
+  <meta name="description" content="Imperium Zhao (IMPXZ): no es cualquier meme. Es el meme zombi del imperio que nunca muere. Compra y haz HODL en Pump.fun." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0a0e12;
+      --panel:#0e141b;
+      --fg:#f5f7fb;
+      --muted:#b7c0cc;
+      --lime:#9dff00;         /* verde lima neon */
+      --lime-2:#7cff00;
+      --yellow:#fff200;       /* amarillo neon */
+      --shadow:0 0 24px rgba(157,255,0,.2), inset 0 0 0 1px rgba(157,255,0,.18);
+      --card-radius:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background:radial-gradient(1200px 800px at 20% -10%, #0d141b 0%, var(--bg) 52%) fixed;
+      color:var(--fg); font-family: 'Urbanist', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Arial, sans-serif;
+      letter-spacing:.2px;
+    }
+    .wrap{max-width:1100px; margin:0 auto; padding:24px}
+    h1,h2{margin:0 0 12px}
+    h1{font-size: clamp(36px, 5vw, 60px); font-weight:900; line-height:1.05}
+    h2{font-size: clamp(22px, 3vw, 30px); font-weight:800}
+    p{font-size: clamp(16px, 2vw, 18px); color:var(--muted); line-height:1.6; margin:8px 0 0}
+    .grid{display:grid; gap:22px}
+    .grid.cols-2{grid-template-columns: repeat(2, minmax(0,1fr))}
+    @media (max-width:900px){ .grid.cols-2{grid-template-columns:1fr} }
+
+    .hero{
+      display:grid; gap:22px; align-items:center; margin:8px 0 28px;
+      grid-template-columns:1.2fr .8fr;
+    }
+    @media (max-width:900px){ .hero{grid-template-columns:1fr} }
+
+    .badge{
+      display:inline-flex; gap:8px; align-items:center;
+      background: linear-gradient(90deg, rgba(157,255,0,.15), rgba(157,255,0,.04));
+      color:#d8ffd1; border:1px solid rgba(157,255,0,.35);
+      padding:8px 12px; border-radius:999px; font-weight:700; text-transform:uppercase; font-size:13px;
+      box-shadow: var(--shadow);
+    }
+    .brand{
+      font-weight:900; color:var(--fg); text-shadow:0 0 30px rgba(157,255,0,.25);
+    }
+    .cta{display:flex; gap:12px; flex-wrap:wrap; margin-top:16px}
+    .btn{
+      appearance:none; border:0; cursor:pointer; font-weight:900; letter-spacing:.4px;
+      border-radius:12px; padding:14px 20px; font-size:16px; line-height:1;
+      background:var(--yellow); color:#0a0a0a; box-shadow:0 6px 20px rgba(255,242,0,.22);
+      transform: translateY(0); transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+      text-decoration:none; display:inline-flex; align-items:center; gap:10px
+    }
+    .btn:hover{transform:translateY(-1px); box-shadow:0 10px 26px rgba(255,242,0,.28)}
+    .btn.outline{
+      background:transparent; color:var(--fg); border:2px solid var(--lime);
+      box-shadow: var(--shadow);
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(157,255,0,.04), rgba(157,255,0,.02)) , var(--panel);
+      border-radius:var(--card-radius); padding:22px; border:1px solid rgba(157,255,0,.22);
+      box-shadow: var(--shadow);
+    }
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace; color:#d6ffd3}
+    .pill{display:inline-block; padding:6px 10px; border-radius:8px; background:rgba(157,255,0,.12); border:1px solid rgba(157,255,0,.25); color:#dfffcd; font-weight:700; font-size:13px}
+    .kv{display:grid; grid-template-columns:120px 1fr; gap:10px; align-items:center; margin:8px 0}
+    .kv b{color:#d9ffd2}
+    .list{margin:10px 0 0; padding-left:18px}
+    .list li{margin:6px 0}
+    /* Donut chart */
+    .donut-wrap{display:flex; align-items:center; justify-content:center; position:relative; aspect-ratio:1/1; max-width:320px; margin:auto}
+    .donut-wrap svg{width:100%; height:auto; filter: drop-shadow(0 0 18px rgba(157,255,0,.35))}
+    .donut-center{
+      position:absolute; inset:0; display:grid; place-items:center; text-align:center;
+      color:#cfffba; font-weight:900;
+    }
+    .donut-center .big{font-size:40px}
+    .donut-center .sub{font-size:14px; color:#bce9a8}
+    .footer{opacity:.75; margin:18px 0 40px; font-size:14px}
+    .accent{color:var(--lime)}
+    .neon{
+      text-shadow: 0 0 12px rgba(157,255,0,.45), 0 0 32px rgba(157,255,0,.25);
+    }
+    .sep{height:1px; background:linear-gradient(90deg, transparent, rgba(157,255,0,.3), transparent); margin:10px 0 18px}
+    a{color:var(--lime)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <!-- HERO -->
+    <section class="hero card">
+      <div>
+        <span class="badge">Token oficial</span>
+        <h1 class="brand neon">IMPERIUM ZHAO <span class="accent">(IMPXZ)</span></h1>
+        <p style="font-size:20px;color:#fff;margin-top:8px">
+          No es cualquier <i>meme coin</i>: es un <b>meme zombi</b>.  
+          El imperio que intentaron cerrar… sigue en pie y más vivo que nunca.
+        </p>
+        <div class="cta">
+          <a class="btn" href="https://pump.fun/coin/GcTjhbAaRePQi932DSpwkKCKqUAW9MNtR1qGT3ph4Fbz" target="_blank" rel="noopener">Comprar / Hacer HODL</a>
+          <a class="btn outline" href="#tokenomics">Tokenomics</a>
+        </div>
+        <div class="sep"></div>
+        <div class="kv">
+          <b>Contrato:</b> 
+          <span class="mono">GcTjhbAaRePQi932DSpwkKCKqUAW9MNtR1qGT3ph4Fbz</span>
+        </div>
+        <div class="kv">
+          <b>Red:</b> <span>Solana</span>
+        </div>
+      </div>
+
+      <!-- Donut -->
+      <div class="card">
+        <h2 style="margin-bottom:6px">Suministro Total</h2>
+        <p>Supply inicial creado en Pump.fun</p>
+        <div class="donut-wrap" aria-label="Supply total 100%">
+          <svg viewBox="0 0 120 120" role="img">
+            <!-- track -->
+            <circle cx="60" cy="60" r="44" fill="none" stroke="rgba(157,255,0,.15)" stroke-width="12"/>
+            <!-- progress 100% -->
+            <circle cx="60" cy="60" r="44" fill="none"
+                    stroke="url(#g)" stroke-width="12"
+                    stroke-dasharray="276.46" stroke-dashoffset="0"
+                    stroke-linecap="round" transform="rotate(-90 60 60)"/>
+            <defs>
+              <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#9dff00"/>
+                <stop offset="100%" stop-color="#7cff00"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <div class="donut-center">
+            <div class="big">100%</div>
+            <div class="sub">Minted</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STORY -->
+    <section class="grid cols-2">
+      <div class="card">
+        <h2>Leyenda &amp; Visión</h2>
+        <p>
+          <b>Imperium Zhao</b> nace de la leyenda de un líder marcado por la
+          justicia y la estrategia. Su imperio no cayó: <b>evolucionó</b>.
+          Hoy su legado vive en la blockchain, donde el poder y el equilibrio
+          se encuentran bajo una sola bandera: <b class="accent">IMPXZ</b>.
+        </p>
+        <ul class="list">
+          <li>Identidad <b>meme zombi</b>: imposible de “matar”.</li>
+          <li>Comunidad con mentalidad de <b>expansión y control</b>.</li>
+          <li>Marca visual <b>profesional</b> (no otro meme cualquiera).</li>
+        </ul>
+        <div class="cta" style="margin-top:14px">
+          <a class="btn" href="https://pump.fun/coin/GcTjhbAaRePQi932DSpwkKCKqUAW9MNtR1qGT3ph4Fbz" target="_blank" rel="noopener">Comprar IMPXZ</a>
+          <a class="btn outline" href="https://pump.fun/coin/GcTjhbAaRePQi932DSpwkKCKqUAW9MNtR1qGT3ph4Fbz" target="_blank" rel="noopener">Trading en Pump.fun</a>
+        </div>
+      </div>
+
+      <div id="tokenomics" class="card">
+        <h2>Tokenomics (simple)</h2>
+        <p><b>Supply total:</b> 1,000,000,000 IMPXZ</p>
+        <p><b>Creación:</b> 100% acuñado en origen (Pump.fun)</p>
+        <p><b>Red:</b> Solana &nbsp;•&nbsp; <b>Contrato:</b> <span class="mono">GcTjhbAaRePQi932DSpwkKCKqUAW9MNtR1qGT3ph4Fbz</span></p>
+        <p style="margin-top:10px">
+          <span class="pill">Sin promesas de rentabilidad</span>
+          &nbsp; <span class="pill">Comunidad primero</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- HOW TO BUY -->
+    <section class="card" style="margin-top:22px">
+      <h2>Cómo comprar IMPXZ</h2>
+      <ol class="list">
+        <li>Instala <b>Phantom</b> o tu wallet Solana favorita.</li>
+        <li>Carga SOL (para comprar + comisiones de red).</li>
+        <li>Visita el enlace oficial y pulsa <b>Buy</b>:
+          <a href="https://pump.fun/coin/GcTjhbAaRePQi932DSpwkKCKqUAW9MNtR1qGT3ph4Fbz" target="_blank" rel="noopener">pump.fun/coin/…Fbz</a>.
+        </li>
+        <li>Confirma la transacción. ¡Hecho! Ya eres parte del imperio.</li>
+      </ol>
+    </section>
+
+    <!-- LINKS -->
+    <section class="grid cols-2" style="margin-top:22px">
+      <div class="card">
+        <h2>Enlaces oficiales</h2>
+        <div class="kv"><b>Compra:</b> <a href="https://pump.fun/coin/GcTjhbAaRePQi932DSpwkKCKqUAW9MNtR1qGT3ph4Fbz" target="_blank" rel="noopener">Pump.fun (IMPXZ)</a></div>
+        <div class="kv"><b>Contrato:</b> <span class="mono">GcTjhbAaRePQi932DSpwkKCKqUAW9MNtR1qGT3ph4Fbz</span></div>
+        <div class="kv"><b>Red:</b> Solana</div>
+      </div>
+
+      <div class="card">
+        <h2>Disclaimer</h2>
+        <p>Este sitio es únicamente informativo. Las criptomonedas son activos volátiles. 
+          No es asesoramiento financiero. Haz tu propia investigación (DYOR) y opera bajo tu propio riesgo.
+        </p>
+      </div>
+    </section>
+
+    <p class="footer">© 2025 Imperium Zhao – IMPXZ · Hecho con <span class="accent">neon</span> en la oscuridad.</p>
+  </div>
+</body>
+</html>
