@@ -18,7 +18,33 @@
     body{
       margin:0; background:radial-gradient(1200px 800px at 20% -10%, #0d141b 0%, var(--bg) 52%) fixed;
       color:var(--fg); font-family:'Urbanist',system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif; letter-spacing:.2px;
+      overflow-x:hidden;
     }
+
+    /* === BURBUJAS VERDE NEÓN DE FONDO (añadido) === */
+    .bg-bubbles{position:fixed; inset:0; z-index:-1; pointer-events:none; overflow:hidden}
+    .bg-bubbles span{
+      position:absolute; bottom:-120px; width:24px; height:24px; border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, #c8ff64 0%, #9dff00 40%, rgba(157,255,0,.35) 65%, rgba(157,255,0,0) 72%);
+      box-shadow: 0 0 18px rgba(157,255,0,.35), inset 0 0 8px rgba(255,255,255,.25);
+      animation: rise var(--t,14s) linear infinite; filter: blur(.2px);
+    }
+    .bg-bubbles span:nth-child(1){left:4%;  --t:15s; transform:scale(1.1)}
+    .bg-bubbles span:nth-child(2){left:12%; --t:19s; transform:scale(0.8)}
+    .bg-bubbles span:nth-child(3){left:20%; --t:13s; transform:scale(1.4)}
+    .bg-bubbles span:nth-child(4){left:32%; --t:21s; transform:scale(0.9)}
+    .bg-bubbles span:nth-child(5){left:44%; --t:12s; transform:scale(1.3)}
+    .bg-bubbles span:nth-child(6){left:56%; --t:18s; transform:scale(0.9)}
+    .bg-bubbles span:nth-child(7){left:68%; --t:16s; transform:scale(1.2)}
+    .bg-bubbles span:nth-child(8){left:78%; --t:22s; transform:scale(0.85)}
+    .bg-bubbles span:nth-child(9){left:88%; --t:14s; transform:scale(1.05)}
+    .bg-bubbles span:nth-child(10){left:94%; --t:20s; transform:scale(0.95)}
+    @keyframes rise{
+      0%{transform: translateY(0) scale(var(--s,1)); opacity:0}
+      10%{opacity:.65} 85%{opacity:.65}
+      100%{transform: translateY(-120vh) scale(var(--s,1)); opacity:0}
+    }
+
     .wrap{max-width:1100px; margin:0 auto; padding:24px}
     h1,h2{margin:0 0 12px} h1{font-size:clamp(36px,5vw,60px); font-weight:900; line-height:1.05}
     h2{font-size:clamp(22px,3vw,30px); font-weight:800}
@@ -57,9 +83,19 @@
     .footer{opacity:.75; margin:18px 0 40px; font-size:14px}
     .hero{display:grid; gap:22px; align-items:center; margin:8px 0 28px; grid-template-columns:1.2fr .8fr}
     @media (max-width:900px){.hero{grid-template-columns:1fr}}
+
+    /* Logo/Banner (añadido) */
+    .logo{max-width:140px; height:auto; border-radius:14px; border:1px solid rgba(157,255,0,.22); box-shadow:var(--shadow); vertical-align:middle}
+    .banner{width:100%; border-radius:16px; border:1px solid rgba(157,255,0,.22); box-shadow:var(--shadow); overflow:hidden}
   </style>
 </head>
 <body>
+  <!-- Fondo con burbujas (añadido) -->
+  <div class="bg-bubbles" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+
   <div class="wrap">
     <!-- LANGUAGE BAR -->
     <div class="langbar card" id="langbar">
@@ -85,7 +121,11 @@
     <section class="hero card">
       <div>
         <span class="badge" id="t_official">Official Token</span>
-        <h1 class="brand neon">IMPERIUM ZHAO <span class="accent">(IMPXZ)</span></h1>
+        <!-- Logo añadido (no quité tu título) -->
+        <h1 class="brand neon">
+          <img src="imperiozhao.png" alt="Imperium Zhao Logo" class="logo" />
+          &nbsp; IMPERIUM ZHAO <span class="accent">(IMPXZ)</span>
+        </h1>
         <p style="font-size:20px;color:#fff;margin-top:8px" id="t_sub">
           Not another <i>meme coin</i>: this is an <b>undead meme</b>.
           The empire they tried to shut down… stands taller and more alive than ever.
@@ -101,27 +141,34 @@
         <div class="kv"><b id="t_network">Network:</b> <span>Solana</span></div>
       </div>
 
-      <!-- Donut -->
-      <div class="card">
-        <h2 style="margin-bottom:6px" id="t_supply">Total Supply</h2>
-        <p id="t_supply_sub">Initial supply minted on Pump.fun</p>
-        <div class="donut-wrap" aria-label="Supply total 100%">
-          <svg viewBox="0 0 120 120" role="img">
-            <circle cx="60" cy="60" r="44" fill="none" stroke="rgba(157,255,0,.15)" stroke-width="12"/>
-            <circle cx="60" cy="60" r="44" fill="none"
-                    stroke="url(#g)" stroke-width="12"
-                    stroke-dasharray="276.46" stroke-dashoffset="0"
-                    stroke-linecap="round" transform="rotate(-90 60 60)"/>
-            <defs>
-              <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#9dff00"/><stop offset="100%" stop-color="#7cff00"/>
-              </linearGradient>
-            </defs>
-          </svg>
-          <div class="donut-center">
-            <div class="big">100%</div>
-            <div class="sub" id="t_minted">Minted</div>
+      <!-- Columna derecha: donut + banner (banner añadido sin quitar nada) -->
+      <div>
+        <div class="card">
+          <h2 style="margin-bottom:6px" id="t_supply">Total Supply</h2>
+          <p id="t_supply_sub">Initial supply minted on Pump.fun</p>
+          <div class="donut-wrap" aria-label="Supply total 100%">
+            <svg viewBox="0 0 120 120" role="img">
+              <circle cx="60" cy="60" r="44" fill="none" stroke="rgba(157,255,0,.15)" stroke-width="12"/>
+              <circle cx="60" cy="60" r="44" fill="none"
+                      stroke="url(#g)" stroke-width="12"
+                      stroke-dasharray="276.46" stroke-dashoffset="0"
+                      stroke-linecap="round" transform="rotate(-90 60 60)"/>
+              <defs>
+                <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#9dff00"/><stop offset="100%" stop-color="#7cff00"/>
+                </linearGradient>
+              </defs>
+            </svg>
+            <div class="donut-center">
+              <div class="big">100%</div>
+              <div class="sub" id="t_minted">Minted</div>
+            </div>
           </div>
+        </div>
+        <!-- Banner añadido -->
+        <div class="card" style="margin-top:14px">
+          <img class="banner" src="imperiozhaobaner.png" alt="Imperium Zhao Banner">
+          <!-- Si tu archivo real se llama imperiozhaobanner.png (con doble n), cambia el src -->
         </div>
       </div>
     </section>
@@ -395,7 +442,7 @@
       const hlEl=document.getElementById('t_how_list'); if(hlEl && hl.length){ hlEl.innerHTML=hl.map(i=>`<li>${i}</li>`).join(''); }
       set('t_links','Official Links'); set('t_buy','Buy:'); set('t_ct','Contract:'); set('t_net','Network:');
       set('t_disc','Disclaimer'); set('t_disc_p','disc_p');
-      // flag state
+      // flags
       document.querySelectorAll('.flag').forEach(f=>f.classList.toggle('active', f.dataset.lang===lang));
       document.documentElement.lang = lang;
     }
